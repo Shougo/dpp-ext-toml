@@ -15,6 +15,12 @@ https://github.com/Shougo/dpp.vim
 ## Configuration
 
 ```typescript
+type Toml = {
+  hooks_file?: string;
+  ftplugins?: Record<string, string>;
+  plugins: Plugin[];
+};
+
 const [context, options] = await args.contextBuilder.get(args.denops);
 
 const tomlPlugins = await args.dpp.extAction(
@@ -29,5 +35,5 @@ const tomlPlugins = await args.dpp.extAction(
       lazy: true,
     },
   },
-) as Plugin[];
+) as Toml;
 ```

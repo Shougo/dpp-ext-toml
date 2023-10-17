@@ -16,6 +16,7 @@ type LoadArgs = {
 
 type Toml = {
   hooks_file?: string;
+  ftplugins?: Record<string, string>;
   plugins: Plugin[];
 };
 
@@ -45,7 +46,9 @@ export class Ext extends BaseExt<Params> {
           };
         });
 
-        return plugins;
+        return {
+          plugins,
+        } satisfies Toml;
       },
     },
   };

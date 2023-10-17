@@ -32,6 +32,12 @@ https://github.com/vim-denops/denops.vim
 ==============================================================================
 EXAMPLES                                               *dpp-ext-toml-examples*
 >typescript
+	type Toml = {
+	  hooks_file?: string;
+	  ftplugins?: Record<string, string>;
+	  plugins: Plugin[];
+	};
+
 	const [context, options] = await args.contextBuilder.get(args.denops);
 	
 	const tomlPlugins = await args.dpp.extAction(
@@ -46,7 +52,7 @@ EXAMPLES                                               *dpp-ext-toml-examples*
 	      lazy: true,
 	    },
 	  },
-	) as Plugin[];
+	) as Toml;
 <
 
 ==============================================================================
@@ -64,7 +70,16 @@ ACTIONS                                                 *dpp-ext-toml-actions*
 
                                                    *dpp-ext-toml-action-local*
 toml
-		Returns loaded toml plugins.
+		Returns loaded toml information.
+		It has following attributes.
+
+		{ftplugin}:	TODO
+				(Optional)
+
+		{hooks_file}:	TODO
+				(Optional)
+
+		{plugins}:	Loaded plugins.
 
 		params:
 			{path}:		toml file path.
