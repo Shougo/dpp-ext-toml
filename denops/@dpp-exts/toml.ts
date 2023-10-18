@@ -46,8 +46,11 @@ export class Ext extends BaseExt<Params> {
           };
         });
 
+        // TODO: Parse hooks_file.
+
         return {
           plugins,
+          ftplugins: toml.ftplugins,
         } satisfies Toml;
       },
     },
