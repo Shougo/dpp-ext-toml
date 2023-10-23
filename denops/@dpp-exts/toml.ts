@@ -4,8 +4,8 @@ import {
   Plugin,
 } from "https://deno.land/x/dpp_vim@v0.0.3/types.ts";
 import { Denops } from "https://deno.land/x/dpp_vim@v0.0.3/deps.ts";
-import { parse } from "https://deno.land/std@0.202.0/toml/mod.ts";
-import { basename } from "https://deno.land/std@0.202.0/path/mod.ts";
+import { parse } from "https://deno.land/std@0.204.0/toml/mod.ts";
+import { basename } from "https://deno.land/std@0.204.0/path/mod.ts";
 
 type Params = Record<string, never>;
 
@@ -46,9 +46,8 @@ export class Ext extends BaseExt<Params> {
           };
         });
 
-        // TODO: Parse hooks_file.
-
         return {
+          hooks_file: toml.hooks_file,
           plugins,
           ftplugins: toml.ftplugins,
         } satisfies Toml;
