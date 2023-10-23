@@ -11,6 +11,7 @@ Examples		|dpp-ext-toml-examples|
 Functions		|dpp-ext-toml-functions|
 Actions			|dpp-ext-toml-actions|
 Params			|dpp-ext-toml-params|
+Toml			|dpp-ext-toml-toml|
 Compatibility		|dpp-ext-toml-compatibility|
 
 
@@ -90,6 +91,78 @@ toml
 ==============================================================================
 PARAMS                                                   *dpp-ext-toml-params*
 
+==============================================================================
+TOML                                                       *dpp-ext-toml-toml*
+
+		TOML file format specification:
+		https://github.com/toml-lang/toml
+
+                                                  *dpp-ext-toml-toml-ftplugin*
+		ftplugin	(Dictionary)
+		"_" key is executed after all ftplugin.
+		"{filetype}" key is executed {filetype} ftplugin.
+		"lua_{filetype}" key is executed {filetype} ftplugin as
+		|:lua|.
+		You can define multiple filetypes by "{filetype1}_{filetype2}"
+		key.  "b:undo_ftplugin" is defined automatically.
+
+                                                *dpp-ext-toml-toml-hooks_file*
+		hooks_file	(String) or (List)
+		It is the global |dpp-plugin-options-hooks_file|.
+
+                                                   *dpp-ext-toml-toml-plugins*
+		plugins		(Dictionary)
+		It is converted to |dpp-plugin-options|.
+		"repo" key is needed.
+
+                                              *dpp-toml-toml-multiple_plugins*
+		multiple_plugins	(Dictionary)
+		It is converted to |dpp-toml-toml-hook_add|.
+		"plugins" key is needed.
+		NOTE: Not implemented yet.
+
+                                                   *dpp-ext-toml-toml-example*
+
+		TOML file sample is here:
+>
+		# TOML sample
+		hook_add = 'let g:foo = 0'
+
+		[ftplugin]
+		# Execute after ftplugin.
+		_ = '''
+		  setl formatoptions-=ro | setl formatoptions+=mMBl
+		'''
+		html = '''
+		setlocal includeexpr=v:fname->substitute('^\\/','','')
+		setlocal path+=./;/
+		'''
+
+		[[plugins]]
+		repo = 'Shougo/neosnippet.vim'
+		on_event = 'InsertEnter'
+		on_ft = 'snippet'
+
+		[[plugins]]
+		repo = 'rhysd/accelerated-jk'
+		on_map = '<Plug>'
+		hook_add = '''
+		  nnoremap <silent>j <Plug>(accelerated_jk_gj)
+		  nnoremap <silent>k <Plug>(accelerated_jk_gk)
+		'''
+		[plugins.ftplugin]
+		python = '''
+		let b:undo_ftplugin ..= 'setlocal foldmethod<'
+		setlocal foldmethod=indent
+		'''
+
+		# "hook_add" is only executed when both "foo" and "bar" are
+		# available.
+		[[multiple_plugins]]
+		plugins = ['foo', 'bar']
+		hook_add = '''
+		'''
+<
 ==============================================================================
 COMPATIBILITY                                     *dpp-ext-toml-compatibility*
 
