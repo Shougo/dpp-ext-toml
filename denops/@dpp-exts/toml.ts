@@ -2,8 +2,8 @@ import {
   Actions,
   BaseExt,
   Plugin,
-} from "https://deno.land/x/dpp_vim@v0.0.3/types.ts";
-import { Denops } from "https://deno.land/x/dpp_vim@v0.0.3/deps.ts";
+} from "https://deno.land/x/dpp_vim@v0.0.4/types.ts";
+import { Denops } from "https://deno.land/x/dpp_vim@v0.0.4/deps.ts";
 import { parse } from "https://deno.land/std@0.204.0/toml/mod.ts";
 import { basename } from "https://deno.land/std@0.204.0/path/mod.ts";
 
