@@ -18,7 +18,7 @@ https://github.com/Shougo/dpp.vim
 type Toml = {
   hooks_file?: string;
   ftplugins?: Record<string, string>;
-  plugins: Plugin[];
+  plugins?: Plugin[];
 };
 
 const [context, options] = await args.contextBuilder.get(args.denops);
