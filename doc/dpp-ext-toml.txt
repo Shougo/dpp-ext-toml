@@ -117,9 +117,8 @@ TOML                                                       *dpp-ext-toml-toml*
 
                                               *dpp-toml-toml-multiple_plugins*
 		multiple_plugins	(Dictionary)
-		It is converted to |dpp-toml-toml-hook_add|.
 		"plugins" key is needed.
-		NOTE: Not implemented yet.
+		NOTE: You need to merge multiple plugins manually.
 
                                                    *dpp-ext-toml-toml-example*
 

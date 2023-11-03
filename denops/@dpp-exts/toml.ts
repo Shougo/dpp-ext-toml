@@ -4,8 +4,8 @@ import {
   Plugin,
 } from "https://deno.land/x/dpp_vim@v0.0.7/types.ts";
 import { Denops } from "https://deno.land/x/dpp_vim@v0.0.7/deps.ts";
-import { parse } from "https://deno.land/std@0.204.0/toml/mod.ts";
-import { basename } from "https://deno.land/std@0.204.0/path/mod.ts";
+import { parse } from "https://deno.land/std@0.205.0/toml/mod.ts";
+import { basename } from "https://deno.land/std@0.205.0/path/mod.ts";
 
 type Params = Record<string, never>;
 
@@ -15,8 +15,11 @@ type LoadArgs = {
 };
 
 type Toml = {
-  hooks_file?: string;
   ftplugins?: Record<string, string>;
+  hooks_file?: string;
+  multiple_plugins?: Plugin[] & {
+    plugins: string[];
+  };
   plugins?: Plugin[];
 };
 
@@ -47,9 +50,10 @@ export class Ext extends BaseExt<Params> {
         });
 
         return {
-          hooks_file: toml.hooks_file,
-          plugins,
           ftplugins: toml.ftplugins,
+          hooks_file: toml.hooks_file,
+          multiple_plugins: toml.multiple_plugins,
+          plugins,
         } satisfies Toml;
       },
     },
