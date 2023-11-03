@@ -74,10 +74,10 @@ toml
 		Returns loaded toml information.
 		It has following attributes.
 
-		{ftplugin}:	TODO
+		{ftplugin}:	Loaded ftplugins.
 				(Optional)
 
-		{hooks_file}:	TODO
+		{hooks_file}:	Loaded hooks_file.
 				(Optional)
 
 		{plugins}:	Loaded plugins.
