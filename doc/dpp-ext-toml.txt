@@ -34,8 +34,11 @@ https://github.com/vim-denops/denops.vim
 EXAMPLES                                               *dpp-ext-toml-examples*
 >typescript
 	type Toml = {
-	  hooks_file?: string;
 	  ftplugins?: Record<string, string>;
+	  hooks_file?: string;
+	  multiple_plugins?: Plugin[] & {
+	    plugins: string[];
+	  };
 	  plugins?: Plugin[];
 	};
 

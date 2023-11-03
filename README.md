@@ -16,8 +16,11 @@ https://github.com/Shougo/dpp.vim
 
 ```typescript
 type Toml = {
-  hooks_file?: string;
   ftplugins?: Record<string, string>;
+  hooks_file?: string;
+  multiple_plugins?: Plugin[] & {
+    plugins: string[];
+  };
   plugins?: Plugin[];
 };
 
