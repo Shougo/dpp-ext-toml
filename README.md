@@ -38,5 +38,5 @@ const tomlPlugins = await args.dpp.extAction(
       lazy: true,
     },
   },
-) as Toml;
+) as Toml | undefined;
 ```

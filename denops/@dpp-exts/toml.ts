@@ -4,8 +4,8 @@ import {
   Plugin,
 } from "https://deno.land/x/dpp_vim@v0.0.7/types.ts";
 import { Denops } from "https://deno.land/x/dpp_vim@v0.0.7/deps.ts";
-import { parse } from "https://deno.land/std@0.205.0/toml/mod.ts";
-import { basename } from "https://deno.land/std@0.205.0/path/mod.ts";
+import { parse } from "https://deno.land/std@0.206.0/toml/mod.ts";
+import { basename } from "https://deno.land/std@0.206.0/path/mod.ts";
 
 type Params = Record<string, never>;
 

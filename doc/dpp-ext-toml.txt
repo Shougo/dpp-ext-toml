@@ -56,7 +56,7 @@ EXAMPLES                                               *dpp-ext-toml-examples*
 	      lazy: true,
 	    },
 	  },
-	) as Toml;
+	) as Toml | undefined;
 <
 
 ==============================================================================
