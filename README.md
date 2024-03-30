@@ -33,7 +33,7 @@ const tomlPlugins = await args.dpp.extAction(
   "toml",
   "load",
   {
-    path: "$BASE_DIR/deinlazy.toml",
+    path: "$BASE_DIR/dpplazy.toml",
     options: {
       lazy: true,
     },
