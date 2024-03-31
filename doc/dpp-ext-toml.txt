@@ -51,7 +51,7 @@ EXAMPLES                                               *dpp-ext-toml-examples*
 	  "toml",
 	  "load",
 	  {
-	    path: "$BASE_DIR/deinlazy.toml",
+	    path: "$BASE_DIR/dpplazy.toml",
 	    options: {
 	      lazy: true,
 	    },
@@ -111,7 +111,7 @@ TOML                                                       *dpp-ext-toml-toml*
 
                                                 *dpp-ext-toml-toml-hooks_file*
 		hooks_file	(String) or (List)
-		It is the global |dpp-plugin-options-hooks_file|.
+		It is the global |dpp-plugin-option-hooks_file|.
 
                                                    *dpp-ext-toml-toml-plugins*
 		plugins		(Dictionary)
