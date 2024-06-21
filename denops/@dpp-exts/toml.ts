@@ -1,23 +1,17 @@
 import {
   Actions,
   BaseExt,
+  MultipleHook,
   Plugin,
-} from "https://deno.land/x/dpp_vim@v0.2.0/types.ts";
-import { basename, Denops } from "https://deno.land/x/dpp_vim@v0.2.0/deps.ts";
-import { parse } from "jsr:@std/toml@0.224.0";
+} from "https://deno.land/x/dpp_vim@v0.3.0/types.ts";
+import { basename, Denops } from "https://deno.land/x/dpp_vim@v0.3.0/deps.ts";
+import { parse } from "jsr:@std/toml@0.224.1";
 
 type Params = Record<string, never>;
 
 type LoadArgs = {
   path: string;
   options?: Partial<Plugin>;
-};
-
-export type MultipleHook = {
-  hook_add?: string;
-  hook_post_source?: string;
-  hook_source?: string;
-  plugins: string[];
 };
 
 type Toml = {
