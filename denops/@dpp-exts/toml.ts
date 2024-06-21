@@ -13,12 +13,17 @@ type LoadArgs = {
   options?: Partial<Plugin>;
 };
 
+export type MultipleHook = {
+  hook_add?: string;
+  hook_post_source?: string;
+  hook_source?: string;
+  plugins: string[];
+};
+
 type Toml = {
   ftplugins?: Record<string, string>;
   hooks_file?: string;
-  multiple_plugins?: Plugin[] & {
-    plugins: string[];
-  };
+  multiple_hooks?: MultipleHook[];
   plugins?: Plugin[];
 };
 
@@ -51,7 +56,7 @@ export class Ext extends BaseExt<Params> {
         return {
           ftplugins: toml.ftplugins,
           hooks_file: toml.hooks_file,
-          multiple_plugins: toml.multiple_plugins,
+          multiple_hooks: toml.multiple_hooks,
           plugins,
         } satisfies Toml;
       },
