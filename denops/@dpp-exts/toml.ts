@@ -1,13 +1,13 @@
 import {
-  Actions,
+  type Actions,
   BaseExt,
-  Denops,
-  MultipleHook,
-  Plugin,
-} from "jsr:@shougo/dpp-vim@1.0.0/types";
+  type Denops,
+  type MultipleHook,
+  type Plugin,
+} from "jsr:@shougo/dpp-vim@~1.0.0/types";
 
-import { basename } from "jsr:@std/path@1.0.2";
-import { parse } from "jsr:@std/toml@1.0.0";
+import { basename } from "jsr:@std/path@~1.0.2";
+import { parse } from "jsr:@std/toml@~1.0.0";
 
 type Params = Record<string, never>;
 
