@@ -4,7 +4,7 @@ import {
   type Denops,
   type MultipleHook,
   type Plugin,
-} from "jsr:@shougo/dpp-vim@~1.0.0/types";
+} from "jsr:@shougo/dpp-vim@~1.1.0/types";
 
 import { basename } from "jsr:@std/path@~1.0.2";
 import { parse } from "jsr:@std/toml@~1.0.0";
@@ -50,9 +50,7 @@ export class Ext extends BaseExt<Params> {
         });
 
         return {
-          ftplugins: toml.ftplugins,
-          hooks_file: toml.hooks_file,
-          multiple_hooks: toml.multiple_hooks,
+          ...toml,
           plugins,
         } satisfies Toml;
       },

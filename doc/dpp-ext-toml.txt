@@ -33,12 +33,6 @@ https://github.com/vim-denops/denops.vim
 ==============================================================================
 EXAMPLES                                               *dpp-ext-toml-examples*
 >typescript
-	type MultipleHook = {
-	  hook_add?: string;
-	  hook_post_source?: string;
-	  hook_source?: string;
-	  plugins: string[];
-	};
 	type Toml = {
 	  ftplugins?: Record<string, string>;
 	  hooks_file?: string;
@@ -76,12 +70,12 @@ dpp#ext#toml#syntax()
 ==============================================================================
 ACTIONS                                                 *dpp-ext-toml-actions*
 
-                                                   *dpp-ext-toml-action-local*
+                                                    *dpp-ext-toml-action-toml*
 toml
 		Returns loaded toml information.
 		It has following attributes.
 
-		{ftplugin}:	Loaded ftplugins.
+		{ftplugins}:	Loaded ftplugins.
 				(Optional)
 
 		{hooks_file}:	Loaded hooks_file.
@@ -105,7 +99,7 @@ TOML                                                       *dpp-ext-toml-toml*
 		https://github.com/toml-lang/toml
 
                                                   *dpp-ext-toml-toml-ftplugin*
-		ftplugin	(Dictionary)
+		ftplugins	(Dictionary)
 		"_" key is executed after all ftplugin.
 		"{filetype}" key is executed {filetype} ftplugin.
 		"lua_{filetype}" key is executed {filetype} ftplugin as
@@ -117,17 +111,17 @@ TOML                                                       *dpp-ext-toml-toml*
 		hooks_file	(String) or (List)
 		It is the global |dpp-plugin-option-hooks_file|.
 
-                                                   *dpp-ext-toml-toml-plugins*
-		plugins		(Dictionary)
-		It is converted to |dpp-plugin-options|.
-		"repo" key is needed.
-
-                                              *dpp-toml-toml-multiple_hooks*
+                                                *dpp-toml-toml-multiple_hooks*
 		multiple_hooks	(Dictionary)
 		It defines multiple plugins hook.
 		NOTE: "plugins" key is needed.
 		NOTE: "hook_add" and "hook_post_source" and "hook_source" keys
 		are only supported.
+
+                                                   *dpp-ext-toml-toml-plugins*
+		plugins		(Dictionary)
+		It is converted to |dpp-plugin-options|.
+		"repo" key is needed.
 
                                                    *dpp-ext-toml-toml-example*
 
@@ -136,7 +130,7 @@ TOML                                                       *dpp-ext-toml-toml*
 		# TOML sample
 		hook_add = 'let g:foo = 0'
 
-		[ftplugin]
+		[ftplugins]
 		# Execute after ftplugin.
 		_ = '''
 		  setl formatoptions-=ro | setl formatoptions+=mMBl
