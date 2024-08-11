@@ -1,22 +1,23 @@
 import {
   type Actions,
   BaseExt,
-  type Denops,
   type MultipleHook,
   type Plugin,
-} from "jsr:@shougo/dpp-vim@~1.1.0/types";
+} from "jsr:@shougo/dpp-vim@~2.1.0/types";
+
+import type { Denops } from "jsr:@denops/std@~7.0.1";
 
 import { basename } from "jsr:@std/path@~1.0.2";
 import { parse } from "jsr:@std/toml@~1.0.0";
 
-type Params = Record<string, never>;
+export type Params = Record<string, never>;
 
-type LoadArgs = {
+export type LoadArgs = {
   path: string;
   options?: Partial<Plugin>;
 };
 
-type Toml = {
+export type Toml = {
   ftplugins?: Record<string, string>;
   hooks_file?: string;
   multiple_hooks?: MultipleHook[];
