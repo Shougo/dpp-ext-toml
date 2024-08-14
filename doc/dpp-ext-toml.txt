@@ -33,28 +33,43 @@ https://github.com/vim-denops/denops.vim
 ==============================================================================
 EXAMPLES                                               *dpp-ext-toml-examples*
 >typescript
-	type Toml = {
-	  ftplugins?: Record<string, string>;
-	  hooks_file?: string;
-	  multiple_hooks?: MultipleHook[];
-	  plugins?: Plugin[];
-	};
+	import type {
+	  Ext as TomlExt,
+	  Params as TomlParams,
+	} from "jsr:@shougo/dpp-ext-toml@~1.1.0";
 
 	const [context, options] = await args.contextBuilder.get(args.denops);
 	
-	const tomlPlugins = await args.dpp.extAction(
+	// Get plugins from other exts
+	const plugins = ...
+	
+	const [tomlExt, tomlOptions, tomlParams]: [
+	  tomlExt | undefined,
+	  ExtOptions,
+	  tomlParams,
+	] = await args.dpp.getExt(
 	  args.denops,
-	  context,
 	  options,
 	  "toml",
-	  "load",
-	  {
-	    path: "$BASE_DIR/dpplazy.toml",
-	    options: {
-	      lazy: true,
+	) as [tomlExt | undefined, ExtOptions, tomlParams];
+	if (tomlExt) {
+	  const action = tomlExt.actions.load;
+	
+	  const tomlPlugins = await action.callback({
+	    denops: args.denops,
+	    context,
+	    options,
+	    protocols,
+	    extOptions: tomlOptions,
+	    extParams: tomlParams,
+	    actionParams: {
+	      path: "$BASE_DIR/dpplazy.toml",
+	      options: {
+	        lazy: true,
+	      },
 	    },
-	  },
-	) as Toml | undefined;
+	  });
+	}
 <
 
 ==============================================================================
