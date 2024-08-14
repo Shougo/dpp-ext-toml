@@ -39,6 +39,7 @@ EXAMPLES                                               *dpp-ext-toml-examples*
 	} from "jsr:@shougo/dpp-ext-toml@~1.1.0";
 
 	const [context, options] = await args.contextBuilder.get(args.denops);
+	const protocols = await args.dpp.getProtocols(args.denops, options);
 	
 	// Get plugins from other exts
 	const plugins = ...
