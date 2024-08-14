@@ -1,9 +1,11 @@
 import {
+  type Action,
   type Actions,
+  type BaseActionParams,
   BaseExt,
   type MultipleHook,
   type Plugin,
-} from "jsr:@shougo/dpp-vim@~2.1.0/types";
+} from "jsr:@shougo/dpp-vim@~2.2.0/types";
 
 import type { Denops } from "jsr:@denops/std@~7.0.1";
 
@@ -24,8 +26,13 @@ export type Toml = {
   plugins?: Plugin[];
 };
 
+export interface ExtActions<Params extends BaseActionParams>
+  extends Actions<Params> {
+  load: Action<Params, Toml>;
+}
+
 export class Ext extends BaseExt<Params> {
-  override actions: Actions<Params> = {
+  override actions: ExtActions<Params> = {
     load: {
       description: "Load toml config",
       callback: async (args: {
@@ -53,7 +60,7 @@ export class Ext extends BaseExt<Params> {
         return {
           ...toml,
           plugins,
-        } satisfies Toml;
+        };
       },
     },
   };
