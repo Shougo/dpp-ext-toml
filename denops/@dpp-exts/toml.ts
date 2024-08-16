@@ -1,6 +1,5 @@
 import {
   type Action,
-  type Actions,
   type BaseActionParams,
   BaseExt,
   type MultipleHook,
@@ -26,8 +25,7 @@ export type Toml = {
   plugins?: Plugin[];
 };
 
-export interface ExtActions<Params extends BaseActionParams>
-  extends Actions<Params> {
+export type ExtActions<Params extends BaseActionParams> = {
   load: Action<Params, Toml>;
 }
 
