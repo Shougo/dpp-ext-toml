@@ -1,15 +1,11 @@
-import {
-  type Action,
-  type BaseActionParams,
-  BaseExt,
-  type MultipleHook,
-  type Plugin,
-} from "jsr:@shougo/dpp-vim@~2.2.0/types";
+import type { BaseParams, Plugin } from "jsr:@shougo/dpp-vim@~3.0.0/types";
+import { type Action, BaseExt } from "jsr:@shougo/dpp-vim@~3.0.0/ext";
+import type { MultipleHook } from "jsr:@shougo/dpp-vim@~3.0.0/config";
 
-import type { Denops } from "jsr:@denops/std@~7.0.1";
+import type { Denops } from "jsr:@denops/std@~7.1.0";
 
-import { basename } from "jsr:@std/path@~1.0.2";
-import { parse } from "jsr:@std/toml@~1.0.0";
+import { basename } from "jsr:@std/path@~1.0.2/basename";
+import { parse } from "jsr:@std/toml@~1.0.0/parse";
 
 export type Params = Record<string, never>;
 
@@ -25,9 +21,9 @@ export type Toml = {
   plugins?: Plugin[];
 };
 
-export type ExtActions<Params extends BaseActionParams> = {
+export type ExtActions<Params extends BaseParams> = {
   load: Action<Params, Toml>;
-}
+};
 
 export class Ext extends BaseExt<Params> {
   override actions: ExtActions<Params> = {
@@ -35,7 +31,7 @@ export class Ext extends BaseExt<Params> {
       description: "Load toml config",
       callback: async (args: {
         denops: Denops;
-        actionParams: unknown;
+        actionParams: BaseParams;
       }) => {
         const params = args.actionParams as LoadArgs;
         const path = await args.denops.call(
