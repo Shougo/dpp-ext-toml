@@ -127,7 +127,7 @@ TOML                                                       *dpp-ext-toml-toml*
 		hooks_file	(String) or (List)
 		It is the global |dpp-plugin-option-hooks_file|.
 
-                                                *dpp-toml-toml-multiple_hooks*
+                                                *dpp-ext-toml-multiple_hooks*
 		multiple_hooks	(Dictionary)
 		It defines multiple plugins hook.
 		It is executed when multiple plugins are loaded.
