@@ -134,6 +134,8 @@ TOML                                                       *dpp-ext-toml-toml*
 		NOTE: "plugins" key is needed.
 		NOTE: "hook_add" and "hook_post_source" and "hook_source" keys
 		are only supported.
+		NOTE: The plugins |dpp-plugin-option-rtp| must not be "".
+		Because the plugins must be sourced.
 
                                                    *dpp-ext-toml-toml-plugins*
 		plugins		(Dictionary)
