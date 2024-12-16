@@ -145,7 +145,7 @@ TOML                                                       *dpp-ext-toml-toml*
                                                    *dpp-ext-toml-toml-example*
 
 		TOML file sample is here:
->
+>toml
 		# TOML sample
 		hook_add = 'let g:foo = 0'
 
