@@ -1,8 +1,8 @@
-import type { BaseParams, Plugin } from "jsr:@shougo/dpp-vim@~4.1.0/types";
-import { type Action, BaseExt } from "jsr:@shougo/dpp-vim@~4.1.0/ext";
-import type { MultipleHook } from "jsr:@shougo/dpp-vim@~4.1.0/config";
+import type { BaseParams, Plugin } from "jsr:@shougo/dpp-vim@~4.2.0/types";
+import { type Action, BaseExt } from "jsr:@shougo/dpp-vim@~4.2.0/ext";
+import type { MultipleHook } from "jsr:@shougo/dpp-vim@~4.2.0/config";
 
-import type { Denops } from "jsr:@denops/std@~7.4.0";
+import type { Denops } from "jsr:@denops/std@~7.5.0";
 
 import { basename } from "jsr:@std/path@~1.0.2/basename";
 import { parse } from "jsr:@std/toml@~1.0.0/parse";
