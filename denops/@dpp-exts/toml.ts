@@ -1,6 +1,7 @@
 import type { BaseParams, Plugin } from "jsr:@shougo/dpp-vim@~4.2.0/types";
 import { type Action, BaseExt } from "jsr:@shougo/dpp-vim@~4.2.0/ext";
 import type { MultipleHook } from "jsr:@shougo/dpp-vim@~4.2.0/config";
+import { printError } from "jsr:@shougo/dpp-vim@~4.2.0/utils";
 
 import type { Denops } from "jsr:@denops/std@~7.5.0";
 
@@ -41,20 +42,30 @@ export class Ext extends BaseExt<Params> {
 
         const defaultOptions = params.options ?? {};
 
-        const toml = parse(await Deno.readTextFile(path)) as Toml;
+        try {
+          const toml = parse(await Deno.readTextFile(path)) as Toml;
 
-        const plugins = (toml.plugins ?? []).map((plugin: Plugin) => {
+          const plugins = (toml.plugins ?? []).map((plugin: Plugin) => {
+            return {
+              ...defaultOptions,
+              ...plugin,
+              name: plugin.name ?? basename(plugin.repo ?? ""),
+            };
+          });
+
           return {
-            ...defaultOptions,
-            ...plugin,
-            name: plugin.name ?? basename(plugin.repo ?? ""),
+            ...toml,
+            plugins,
           };
-        });
+        } catch (e: unknown) {
+          await printError(
+            args.denops,
+            e,
+            `${path}: parse failed.`,
+          );
+        }
 
-        return {
-          ...toml,
-          plugins,
-        };
+        return {};
       },
     },
   };
