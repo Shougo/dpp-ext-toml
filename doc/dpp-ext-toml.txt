@@ -131,9 +131,8 @@ TOML                                                       *dpp-ext-toml-toml*
 		multiple_hooks	(Dictionary)
 		It defines multiple plugins hook.
 		It is executed when multiple plugins are loaded.
-		NOTE: "plugins" key is needed.
-		NOTE: "hook_add" and "hook_post_source" and "hook_source" keys
-		are only supported.
+		NOTE: "plugins" key is required.
+		NOTE: Supported keys: "hooks_file", "hook_add", "hook_source".
 		NOTE: The plugins |dpp-plugin-option-rtp| must not be "".
 		Because the plugins must be sourced.
 
