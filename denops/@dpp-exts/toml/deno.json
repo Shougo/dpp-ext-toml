@@ -1,5 +1,5 @@
 {
-  "name": "@shougo/dpp-ext-lazy",
+  "name": "@shougo/dpp-ext-toml",
   "exports": {
     ".": "./main.ts"
   },
