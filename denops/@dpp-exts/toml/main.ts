@@ -1,12 +1,12 @@
-import type { BaseParams, Plugin } from "jsr:@shougo/dpp-vim@~4.6.0/types";
-import { type Action, BaseExt } from "jsr:@shougo/dpp-vim@~4.6.0/ext";
-import type { MultipleHook } from "jsr:@shougo/dpp-vim@~4.6.0/config";
-import { printError } from "jsr:@shougo/dpp-vim@~4.6.0/utils";
+import type { BaseParams, Plugin } from "@shougo/dpp-vim/types";
+import { type Action, BaseExt } from "@shougo/dpp-vim/ext";
+import type { MultipleHook } from "@shougo/dpp-vim/config";
+import { printError } from "@shougo/dpp-vim/utils";
 
-import type { Denops } from "jsr:@denops/std@~7.6.0";
+import type { Denops } from "@denops/std";
 
-import { basename } from "jsr:@std/path@~1.1.0/basename";
-import { parse } from "jsr:@std/toml@~1.0.0/parse";
+import { basename } from "@std/path/basename";
+import { parse } from "@std/toml/parse";
 
 export type Params = Record<string, never>;
 
