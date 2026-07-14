@@ -9,8 +9,8 @@
     ]
   },
   "imports": {
-    "@denops/std": "jsr:@denops/std@~8.0.0",
-    "@shougo/dpp-vim": "jsr:@shougo/dpp-vim@~5.0.0",
+    "@denops/std": "jsr:@denops/std@~8.2.0",
+    "@shougo/dpp-vim": "jsr:@shougo/dpp-vim@~6.6.0",
     "@std/path": "jsr:@std/path@~1.1.2",
     "@std/toml": "jsr:@std/toml@~1.0.0"
   }

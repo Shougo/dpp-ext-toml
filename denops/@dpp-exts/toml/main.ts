@@ -43,15 +43,14 @@ export class Ext extends BaseExt<Params> {
         const defaultOptions = params.options ?? {};
 
         try {
-          const toml = parse(await Deno.readTextFile(path)) as Toml;
+          const content = await Deno.readTextFile(path);
+          const toml = parse(content) as Toml;
 
-          const plugins = (toml.plugins ?? []).map((plugin: Plugin) => {
-            return {
-              ...defaultOptions,
-              ...plugin,
-              name: plugin.name ?? basename(plugin.repo ?? ""),
-            };
-          });
+          const plugins = (toml.plugins ?? []).map((plugin) => ({
+            ...defaultOptions,
+            ...plugin,
+            name: plugin.name ?? basename(plugin.repo ?? ""),
+          }));
 
           return {
             ...toml,
@@ -63,9 +62,8 @@ export class Ext extends BaseExt<Params> {
             e,
             `${path}: parse failed.`,
           );
+          return {};
         }
-
-        return {};
       },
     },
   };
